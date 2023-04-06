@@ -1,0 +1,119 @@
+.sidebar {
+  flex: 0.2;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid lightgrey;
+
+  .sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+
+    .sidebar-avatar {
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+    }
+
+    .sidebar-headerRight {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-width: 5vw;
+
+      .icon-button {
+        cursor: pointer;
+        padding: 1px 3px 0.1px 3px;
+        color: rgb(107, 105, 105);
+      }
+
+      .icon-button:hover {
+        background-color: lightgray;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .sidebar-search {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    align-content: center;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+    overflow: hidden;
+    margin: 10px;
+    text-align: center;
+    background-color: #fefefe;
+
+    input {
+      width: 100%;
+      height: 35px;
+      background: transparent;
+      padding-left: 15px;
+      outline: none;
+      border: none;
+      color: black;
+    }
+
+    ::placeholder {
+      color: darkgrey;
+    }
+
+    span {
+      align-items: center;
+      text-align: center;
+      color: rgb(107, 105, 105);
+    }
+  }
+
+  .sidebar-chats {
+    flex: 1;
+    overflow: scroll;
+    background-color: #fefefe;
+    padding: 10px 0px;
+
+    .side-bar-chatContainer {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 10px 20px;
+      cursor: pointer;
+
+      .sidebar-chat-avatar {
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+      }
+
+      .chat-info-wrapper {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        border-bottom: 1px solid lightgrey;
+        padding-bottom: 10px;
+
+        h3 {
+          font-size: 16px;
+        }
+
+        p {
+          font-size: 12px;
+        }
+      }
+
+      .chat-info-wrapper:hover {
+        border-bottom: none;
+      }
+    }
+
+    .side-bar-chatContainer:hover {
+      background-color: #ebebeb;
+    }
+  }
+}

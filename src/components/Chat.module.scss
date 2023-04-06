@@ -1,0 +1,103 @@
+.chat-container {
+  flex: 0.8;
+  display: flex;
+  flex-direction: column;
+
+  .chat-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #ededed;
+
+    .chat-personInfo-wrapper {
+      flex: 1;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+
+      .person-avatar {
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+      }
+
+      .chat-info-wrapper {
+        display: flex;
+        flex-direction: column;
+
+        h3 {
+          font-size: 16px;
+        }
+
+        p {
+          font-size: 12px;
+          color: darkgrey;
+        }
+      }
+    }
+
+    .chat-action-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .left-action-wrapper {
+        border-right: 1px solid lightgrey;
+        padding-right: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .right-action-wrapper {
+        padding-left: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+    }
+  }
+
+  .chat-body {
+    flex: 1;
+    background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
+    background-repeat: repeat;
+    background-position: center;
+    overflow: scroll;
+    padding: 30px;
+
+    .chat-message {
+      font-size: 16px;
+      font-weight: 500;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: #ffffff;
+      width: fit-content;
+      width: -moz-fit-content;
+      margin-bottom: 20px;
+      position: relative;
+
+      .chat-name {
+        position: absolute;
+        top: -15px;
+        font-weight: 700;
+        font-size: xx-small;
+        white-space: nowrap;
+      }
+
+      .chat-stamp {
+        margin-left: 10px;
+        font-size: xx-small;
+      }
+    }
+
+    // .chat-receiver {
+    //   margin-left: auto;
+    //   background-color: #dcf8c6;
+    // }
+  }
+
+  .chat-footer {
+    background-color: aqua;
+  }
+}
