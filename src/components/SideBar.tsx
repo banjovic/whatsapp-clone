@@ -1,16 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { collection, onSnapshot, doc } from 'firebase/firestore';
+import db from '../firebase';
+
 import styles from './SideBar.module.scss';
 
 import Avatar from '../assets/placeholder.png';
 import { MdDonutLarge } from 'react-icons/md';
-import { HiOutlinePencilAlt } from 'react-icons/hi';
-import { BiDotsVerticalRounded } from 'react-icons/bi';
-import { AiOutlineSearch } from 'react-icons/ai';
+import { HiOutlinePencilAlt, HiOutlineUserGroup } from 'react-icons/hi';
+// import { BiDotsVerticalRounded } from 'react-icons/bi';
+import { AiOutlineSearch, AiOutlineDown } from 'react-icons/ai';
 import SideBarChat from './SideBarChat';
 
 type Props = {};
 
+type chatType = {
+  name: string;
+};
+
 const SideBar = (props: Props) => {
+  const [group, setGroup] = useState<chatType[]>([]);
+  // const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    // setLoading(true);
+    const getgroups = onSnapshot(collection(db, 'group'), (snapshot) => {
+      const initgroup: chatType[] = [];
+      snapshot.forEach((snap) => {
+        initgroup.push(snap.data() as chatType);
+      });
+
+      setGroup(initgroup);
+    });
+    // setLoading(false);
+    return () => {
+      getgroups();
+    };
+  }, []);
+
   return (
     <div className={styles['sidebar']}>
       <div className={styles['sidebar-header']}>
@@ -18,13 +44,16 @@ const SideBar = (props: Props) => {
 
         <div className={styles['sidebar-headerRight']}>
           <div className={styles['icon-button']}>
+            <HiOutlineUserGroup />
+          </div>
+          <div className={styles['icon-button']}>
             <MdDonutLarge />
           </div>
           <div className={styles['icon-button']}>
             <HiOutlinePencilAlt />
           </div>
           <div className={styles['icon-button']}>
-            <BiDotsVerticalRounded />
+            <AiOutlineDown />
           </div>
         </div>
       </div>
@@ -43,9 +72,9 @@ const SideBar = (props: Props) => {
 
       <div className={styles['sidebar-chats']}>
         <SideBarChat addNewChat />
-        <SideBarChat />
-        <SideBarChat />
-        <SideBarChat />
+        {group.map((single) => {
+          return <SideBarChat name={single.name} key={single.name} />;
+        })}
       </div>
     </div>
   );

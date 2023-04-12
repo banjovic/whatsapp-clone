@@ -1,14 +1,40 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { collection, doc, getDoc, onSnapshot } from 'firebase/firestore';
+import db from '../firebase';
+
 import styles from './Chat.module.scss';
 import Avatar from '../assets/placeholder.png';
 import { HiOutlineVideoCamera } from 'react-icons/hi';
 import { IoCallOutline } from 'react-icons/io5';
 import { AiOutlineSearch, AiOutlineDown } from 'react-icons/ai';
+import { GrAttachment } from 'react-icons/gr';
+import { MdOutlineEmojiEmotions } from 'react-icons/md';
+import { BsMic } from 'react-icons/bs';
 
 type Props = {};
 
 const Chat = (props: Props) => {
+  const [input, setInput] = useState<string>('');
   const [seed, setSeed] = useState<string | number>('');
+  const { groupId } = useParams();
+  const [groupName, setGroupName] = useState<string>('');
+
+  const sendMessage = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+
+    console.log('You typed', input);
+
+    setInput('');
+  };
+
+  useEffect(() => {
+    if (groupId) {
+      // const docRef = doc(db, 'group', '
+      // 3EWJfgeWFAjbp4EDb9Jx');
+      // getDoc(docRef)
+    }
+  }, [groupId]);
 
   useEffect(() => {
     setSeed(Math.floor(Math.random() * 5000));
@@ -47,7 +73,29 @@ const Chat = (props: Props) => {
           Hey Boss <span className={styles['chat-stamp']}>13:02pm</span>
         </p>
       </div>
-      <div className={styles['chat-footer']}>Footer</div>
+
+      <div className={styles['chat-footer']}>
+        <div className={styles['action-icon-wrapper']}>
+          <MdOutlineEmojiEmotions />
+        </div>
+        <div className={styles['action-icon-wrapper']}>
+          <GrAttachment />
+        </div>
+        <form>
+          <input
+            type="text"
+            placeholder="Type a message"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+          <button type="submit" onClick={sendMessage}>
+            Send
+          </button>
+        </form>
+        <div className={styles['action-icon-wrapper']}>
+          <BsMic />
+        </div>
+      </div>
     </div>
   );
 };
