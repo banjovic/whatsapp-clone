@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { collection, doc, getDoc, onSnapshot } from 'firebase/firestore';
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  onSnapshot,
+} from 'firebase/firestore';
 import db from '../firebase';
 
 import styles from './Chat.module.scss';
@@ -30,9 +37,17 @@ const Chat = (props: Props) => {
 
   useEffect(() => {
     if (groupId) {
-      // const docRef = doc(db, 'group', '
-      // 3EWJfgeWFAjbp4EDb9Jx');
-      // getDoc(docRef)
+      const functionName = async () => {
+        const getCollections = collection(db, 'group');
+        const querySnapshot = await getDocs(getCollections);
+
+        querySnapshot.forEach((doc) => {
+          if (doc.id === groupId) {
+            setGroupName(doc.data().name);
+          }
+        });
+      };
+      functionName();
     }
   }, [groupId]);
 
@@ -51,7 +66,7 @@ const Chat = (props: Props) => {
           />
 
           <div className={styles['chat-info-wrapper']}>
-            <h3>Person Name</h3>
+            <h3>{groupName}</h3>
             <p>Last Seen at...</p>
           </div>
         </div>

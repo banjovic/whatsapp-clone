@@ -15,23 +15,27 @@ type Props = {};
 
 type chatType = {
   name: string;
+  id: string;
 };
 
 const SideBar = (props: Props) => {
   const [group, setGroup] = useState<chatType[]>([]);
-  // const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    // setLoading(true);
     const getgroups = onSnapshot(collection(db, 'group'), (snapshot) => {
       const initgroup: chatType[] = [];
+      let data: chatType[] = [];
+
       snapshot.forEach((snap) => {
         initgroup.push(snap.data() as chatType);
-      });
+        data.push(snap?.id as unknown as chatType);
 
-      setGroup(initgroup);
+        const merged = initgroup.map((obj, index) =>
+          Object.assign({}, obj, { id: data[index] })
+        );
+        setGroup(merged);
+      });
     });
-    // setLoading(false);
     return () => {
       getgroups();
     };
@@ -73,7 +77,9 @@ const SideBar = (props: Props) => {
       <div className={styles['sidebar-chats']}>
         <SideBarChat addNewChat />
         {group.map((single) => {
-          return <SideBarChat name={single.name} key={single.name} />;
+          return (
+            <SideBarChat name={single.name} key={single.id} id={single.id} />
+          );
         })}
       </div>
     </div>

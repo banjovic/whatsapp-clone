@@ -9,9 +9,10 @@ import { Link } from 'react-router-dom';
 type Props = {
   addNewChat?: boolean;
   name?: string;
+  id?: string;
 };
 
-const SideBarChat = ({ addNewChat, name }: Props) => {
+const SideBarChat = ({ addNewChat, name, id }: Props) => {
   const [seed, setSeed] = useState<string | number>('');
 
   const createChat = async () => {
@@ -29,7 +30,7 @@ const SideBarChat = ({ addNewChat, name }: Props) => {
   }, []);
 
   return !addNewChat ? (
-    <Link to={`/group/${name}`}>
+    <Link to={`/group/${id}`}>
       <div className={styles['side-bar-chatContainer']}>
         <img
           src={`https://avatars.dicebear.com/api/human/${seed}.svg`}
