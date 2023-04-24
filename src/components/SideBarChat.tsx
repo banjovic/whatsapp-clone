@@ -3,7 +3,6 @@ import { collection, addDoc } from 'firebase/firestore';
 import db from '../firebase';
 
 import styles from './SideBar.module.scss';
-import Avatar from '../assets/placeholder.png';
 import { Link } from 'react-router-dom';
 
 type Props = {

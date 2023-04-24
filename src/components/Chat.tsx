@@ -11,7 +11,6 @@ import {
 import db from '../firebase';
 
 import styles from './Chat.module.scss';
-import Avatar from '../assets/placeholder.png';
 import { HiOutlineVideoCamera } from 'react-icons/hi';
 import { IoCallOutline } from 'react-icons/io5';
 import { AiOutlineSearch, AiOutlineDown } from 'react-icons/ai';
@@ -53,7 +52,7 @@ const Chat = (props: Props) => {
 
   useEffect(() => {
     setSeed(Math.floor(Math.random() * 5000));
-  }, []);
+  }, [groupId]);
 
   return (
     <div className={styles['chat-container']}>
