@@ -5,16 +5,16 @@ import {
   signInWithPopup,
 } from 'firebase/auth';
 import { Formik } from 'formik';
+import { useNavigate } from 'react-router-dom';
 
 import styles from './AuthPage.module.scss';
 import { auth, provider } from '../../firebase';
+import { useStateValue } from '../../api/StateProvider';
+import { actionTypes } from '../../api/reducer';
 
 import WhatsAppLogo from '../../assets/whatsapp-logo-png-2263.png';
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
-import { useStateValue } from '../../api/StateProvider';
-import { actionTypes } from '../../api/reducer';
-import { useNavigate } from 'react-router-dom';
 
 type Props = {};
 
@@ -32,11 +32,12 @@ const AuthPage = (props: Props) => {
   const [loading, setLoading] = useState<boolean>(false);
 
   const [{}, dispatch] = useStateValue();
-  // const navigate = useNavigate();
+  // const { dispatch } = useStateValue();
 
   const SignInWithGoogle = async () => {
     try {
       const data = await signInWithPopup(auth, provider);
+      console.log('data', data);
       dispatch({
         type: actionTypes.SET_USER,
         user: data.user,
