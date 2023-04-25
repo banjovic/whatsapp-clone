@@ -12,6 +12,9 @@ import { auth, provider } from '../../firebase';
 import WhatsAppLogo from '../../assets/whatsapp-logo-png-2263.png';
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
+import { useStateValue } from '../../api/StateProvider';
+import { actionTypes } from '../../api/reducer';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {};
 
@@ -28,10 +31,17 @@ const AuthPage = (props: Props) => {
   const [visible, setVisible] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
 
+  const [{}, dispatch] = useStateValue();
+  // const navigate = useNavigate();
+
   const SignInWithGoogle = async () => {
     try {
-      await signInWithPopup(auth, provider);
-      // router.push('/dashboard');
+      const data = await signInWithPopup(auth, provider);
+      dispatch({
+        type: actionTypes.SET_USER,
+        user: data.user,
+      });
+      // navigate('/');
     } catch (error: any) {
       console.log('error', error);
       alert(error.message);

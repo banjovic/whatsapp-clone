@@ -6,9 +6,10 @@ import SideBar from './components/SideBar';
 import Chat from './components/Chat';
 import InitialChat from './components/InitialChat';
 import AuthPage from './components/authPages/AuthPage';
+import { State, useStateValue } from './api/StateProvider';
 
 function App() {
-  const [user, setUser] = useState(null);
+  const { user } = useStateValue<State>();
 
   return (
     <div className="app">
