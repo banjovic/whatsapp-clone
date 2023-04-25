@@ -1,0 +1,258 @@
+.auth-page {
+  background-color: #f8f8f8;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  place-items: center;
+
+  .auth-page-container {
+    padding: 50px 100px;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    img {
+      object-fit: contain;
+      height: 100px;
+    }
+
+    .auth-title {
+      h2 {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 44px;
+        color: inherit;
+      }
+
+      .auth-span {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 29px;
+
+        span {
+          color: #128c7e;
+          font-weight: 600;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .auth-content-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 40px;
+
+      .auth-content-container {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        // margin: 30px;
+
+        .form-wrapper {
+          form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            .form-input-wrapper {
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+
+              div {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+
+                label {
+                  font-weight: 500;
+                  font-size: 14px;
+                  line-height: 17px;
+                  color: inherit;
+                  margin-top: 10px;
+                }
+
+                .error {
+                  color: #eb4335;
+                  font-weight: 400;
+                  font-size: 14px;
+                  margin-top: -10px;
+                }
+
+                .email-input-error {
+                  border: 1px solid #eb4335;
+                  outline: none;
+                  //   width: 100%;
+                  height: 40px;
+                  border-radius: 0.35rem;
+                  background: inherit;
+                  padding: 2px 15px;
+                  color: inherit;
+                }
+
+                .email-input-field {
+                  border: 1px solid darkgray;
+                  outline: none;
+                  //   width: 100%;
+                  height: 40px;
+                  border-radius: 0.35rem;
+                  background: transparent;
+                  padding: 2px 15px;
+                  color: #213547;
+                }
+
+                .input-icon-container {
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: space-between;
+                  align-items: center;
+                  gap: 10px;
+                  align-content: center;
+                  border: 1px solid #e5e5e5;
+                  border-radius: 0.35rem;
+                  padding-right: 15px;
+
+                  input {
+                    width: 100%;
+                    height: 40px;
+                    background: inherit;
+                    padding-left: 15px;
+                    outline: none;
+                    border: none;
+                    color: inherit;
+                  }
+
+                  span {
+                    align-items: center;
+                  }
+                }
+
+                .input-error {
+                  border: 1px solid #eb4335;
+                  outline: #eb4335;
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: space-between;
+                  align-items: center;
+                  gap: 10px;
+                  align-content: center;
+                  border-radius: 0.35rem;
+                  padding-right: 15px;
+
+                  input {
+                    width: 100%;
+                    height: 40px;
+                    background: darkgray;
+                    padding-left: 15px;
+                    outline: none;
+                    border: none;
+                  }
+
+                  span {
+                    align-items: center;
+                  }
+                }
+              }
+
+              .auth-footnotes {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                justify-content: space-between;
+                width: 100%;
+                align-items: center;
+
+                .footnotes-checkbox {
+                  display: flex;
+                  flex-direction: row;
+
+                  .check-title {
+                    text-align: center;
+                    margin-top: 0 !important;
+                  }
+
+                  input {
+                    color: transparent !important;
+                  }
+                }
+
+                .forgot__password__link {
+                  font-weight: 500;
+                  font-size: 14px;
+                  line-height: 21px;
+                  color: inherit;
+                  align-items: flex-end;
+                  cursor: pointer;
+                }
+              }
+            }
+
+            .login-btn {
+              margin: 10px 0;
+
+              button {
+                background: #075e54;
+                border: 1px solid 075e54;
+                box-sizing: border-box;
+                border-radius: 5px;
+                width: 100%;
+                padding: 13px 15px;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                color: #ffffff;
+                font-weight: 600;
+                font-size: 16px;
+              }
+            }
+          }
+        }
+
+        .auth-action-wrapper {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          align-items: center;
+
+          .auth-action-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            .auth-line {
+              border-bottom: 1px solid darkgray;
+              width: 112px;
+              height: 47px;
+              margin-bottom: 40px;
+            }
+          }
+
+          .auth-action {
+            display: flex;
+            gap: 16px;
+            border: 1px solid darkgray;
+            border-radius: 10px;
+            padding: 15px 25px;
+            justify-content: center;
+            cursor: pointer;
+            align-items: center;
+            margin-top: -10px;
+          }
+        }
+      }
+
+      .auth-content-footnote {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 19px;
+        color: inherit;
+        text-align: end;
+      }
+    }
+  }
+}
